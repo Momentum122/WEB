@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse & Syntax: Grammar in the World of Birth</title>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --dark: #141b2d;
+      --dark-soft: #1f2a44;
+      --primary: #b8323f;
+      --primary-hover: #962530;
+      --teal: #1d6f72;
+      --teal-light: #e6f4f4;
+      --amber-light: #fff4e0;
+      --amber-text: #8a5300;
+      --text: #222938;
+      --muted: #5b657a;
+      --border: #e2e6ef;
+      --radius: 12px;
+      --shadow: 0 6px 20px rgba(20, 27, 45, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(20, 27, 45, 0.96);
+      backdrop-filter: blur(8px);
+      padding: 0.9rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: #ff6b78;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #d8dfee;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #101726 0%, #1d2942 60%, #2c1f2c 100%);
+      color: #ffffff;
+      padding: 5.5rem 5% 5rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 107, 120, 0.16);
+      color: #ff99a2;
+      border: 1px solid rgba(255, 107, 120, 0.35);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      font-weight: 800;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: #cfd8ea;
+      font-weight: 400;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-quote {
+      max-width: 780px;
+      margin: 0 auto 2.25rem;
+      background: rgba(255, 255, 255, 0.06);
+      border-left: 4px solid #ff6b78;
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      text-align: left;
+      color: #e9eef7;
+      font-size: 1.02rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, background-color 0.2s, opacity 0.2s;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-teal {
+      background: var(--teal);
+      color: #ffffff;
+    }
+
+    .btn-teal:hover {
+      background: #165759;
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 3.5rem 5%;
+    }
+
+    section {
+      margin-bottom: 5rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--dark);
+    }
+
+    /* Concept Grid */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      font-size: 1.15rem;
+    }
+
+    .card ul, .card ol {
+      padding-left: 1.25rem;
+    }
+
+    .card li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-box {
+      background: var(--teal-light);
+      border-left: 4px solid var(--teal);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* Video Section */
+    .video-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-info {
+      padding: 1rem 1.15rem;
+    }
+
+    .video-info h4 {
+      font-size: 1rem;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .video-info p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* Scaling Ladder */
+    .ladder {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .ladder-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--teal);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .ladder-step.comp {
+      border-top-color: #d97706;
+    }
+
+    .ladder-step.sup {
+      border-top-color: var(--primary);
+    }
+
+    .ladder-step h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .scale-chain {
+      background: #f1f4f9;
+      padding: 0.85rem 1.15rem;
+      border-radius: 8px;
+      margin-bottom: 0.65rem;
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Practice Zone */
+    .practice-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .practice-header h3 {
+      font-size: 1.35rem;
+      color: var(--dark);
+    }
+
+    .teacher-controls {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .instruction-banner {
+      background: #eef2fa;
+      border: 1px solid #d5dff2;
+      color: var(--dark-soft);
+      padding: 0.9rem 1.2rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .q-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.15rem;
+    }
+
+    .q-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.9rem;
+    }
+
+    .q-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      background: #e9eef7;
+      color: var(--dark-soft);
+      margin-bottom: 0.45rem;
+    }
+
+    .q-tag.passive-tag {
+      background: var(--teal-light);
+      color: var(--teal);
+    }
+
+    .q-text {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .answer-box {
+      display: none;
+      background: #f4f9f6;
+      border-left: 3px solid #1f7a4c;
+      padding: 0.75rem 0.95rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.92rem;
+      color: #164e32;
+    }
+
+    .answer-box.trap {
+      background: var(--amber-light);
+      border-left-color: #d97706;
+      color: var(--amber-text);
+    }
+
+    .answer-box.visible {
+      display: block;
+    }
+
+    .toggle-btn {
+      align-self: flex-start;
+      background: #f1f4f9;
+      color: var(--dark);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .toggle-btn:hover {
+      background: #e2e8f2;
+    }
+
+    /* Student Hub & Form */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 0.35rem;
+      color: var(--dark);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid #cbd3e1;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(29, 111, 114, 0.14);
+    }
+
+    .ticket-output {
+      display: none;
+      margin-top: 1.5rem;
+      background: #f8fafc;
+      border: 2px dashed var(--teal);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+
+    .ticket-output.visible {
+      display: block;
+    }
+
+    .ticket-output pre {
+      white-space: pre-wrap;
+      font-family: inherit;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .prompt-card {
+      background: #fcfdff;
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #aeb8cc;
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#top" class="brand">Pulse <span>&amp;</span> Syntax</a>
+    <div class="nav-links">
+      <a href="#module1">Module 1: Voice</a>
+      <a href="#module2">Module 2: Comparison</a>
+      <a href="#hub">Student Hub</a>
+    </div>
+  </nav>
+
+  <!-- Page 1: Hero / Welcome -->
+  <header id="top" class="hero">
+    <div class="hero-badge">Class XI Interactive Grammar TLM &bull; Based on A.J. Cronin's Birth</div>
+    <h1>Pulse &amp; Syntax:<br>Grammar in the World of <em>Birth</em></h1>
+    <p class="hero-tagline">Where medical emergencies meet grammatical mastery.</p>
+    <div class="hero-quote">
+      Step into Blaenelly, Wales. As Dr. Andrew Manson races against time to save a life, we will master the mechanics of English grammar. Discover how <strong>Passive Voice</strong> creates clinical objectivity and how <strong>Degrees of Comparison</strong> map a physician's journey from midnight doubt to dawn triumph.
+    </div>
+    <div class="hero-actions">
+      <a href="#module1" class="btn btn-primary">Explore Module 1: Voice</a>
+      <a href="#module2" class="btn btn-outline">Explore Module 2: Comparison</a>
+      <a href="#hub" class="btn btn-outline">Student Hub &amp; Exit Ticket</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Page 2: Module 1 - Active vs. Passive Voice -->
+    <section id="module1">
+      <div class="section-header">
+        <div class="section-kicker">Module 1</div>
+        <h2>Active vs. Passive Voice in Medical Narratives</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Voice Breakdown</h3>
+          <ul>
+            <li><strong>Active Voice:</strong> Focuses on the <em>doer (agent)</em> &rarr; Subject + Verb + Object.<br><em>Example:</em> "Andrew injected the medicine."</li>
+            <li><strong>Passive Voice:</strong> Focuses on the <em>action or receiver</em> &rarr; Object + Form of 'to be' + Past Participle (V<sub>3</sub>) + by Agent.<br><em>Example:</em> "The medicine was injected by Andrew."</li>
+          </ul>
+          <div class="highlight-box">
+            <strong>Why Doctors Use Passive Voice:</strong> In clinical and scientific writing, passive voice emphasizes the <em>medical procedure</em> or patient condition rather than who performed it, maintaining objective professionalism.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Golden Rules &amp; The Intransitive Trap</h3>
+          <ol>
+            <li>The direct object of the active sentence becomes the subject of the passive sentence.</li>
+            <li>Use the correct tense form of <strong>'to be' + V<sub>3</sub></strong> (past participle).</li>
+            <li>The original subject becomes the agent preceded by <strong>'by'</strong> (or is omitted when irrelevant).</li>
+          </ol>
+          <div class="highlight-box" style="background: var(--amber-light); border-left-color: #d97706; color: var(--amber-text);">
+            <strong>Watch Out for Intransitive Verbs:</strong> Verbs with no direct object (like <em>wait, pace, arrive, walk</em>) <strong>cannot</strong> be converted into passive voice.
+          </div>
+        </div>
+      </div>
+
+      <!-- Embedded Grammar Songs -->
+      <div class="practice-header">
+        <h3>Rhythm of Voice: Listen Before You Practice</h3>
+      </div>
+      <div class="grid-3">
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/nRdGWakKh6I" title="Passive Voice B1 Song" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h4>Passive Voice (B1) – Learn English With Songs</h4>
+            <p>Emphasizes the action across tenses ("It was done, It is done, It will be done").</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/JOBxOYWtP5k" title="Active and Passive Voice Song All Tenses" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h4>Active &amp; Passive Voice Song (All Tenses)</h4>
+            <p>Transforms base active sentences step-by-step across different tenses.</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/ARaEpSAD-ng" title="Passive Voice Song Rockin English" allowfullscreen></iframe>
+          </div>
+          <div class="video-info">
+            <h4>Passive Voice Song – Rockin' English</h4>
+            <p>Upbeat acoustic pairing of active clauses with their passive counterparts.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 Practice Questions: Active & Passive -->
+      <div class="practice-header">
+        <h3>Practice Challenge: 10 Voice Questions (Based on <em>Birth</em>)</h3>
+        <div class="teacher-controls">
+          <button class="btn btn-teal btn-sm" onclick="toggleAll('voice-ans', true)">Teacher: Show All</button>
+          <button class="btn btn-sm" style="background:#e2e8f2; color:var(--dark);" onclick="toggleAll('voice-ans', false)">Hide All</button>
+        </div>
+      </div>
+
+      <div class="instruction-banner">
+        <strong>Instructions:</strong> Convert active sentences to passive, passive to active, or spot the <strong>Intransitive Trap</strong> (sentences with no direct object that cannot be converted).
+      </div>
+
+      <div class="q-grid">
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q1 &bull; Active &rarr; Passive</span>
+            <p class="q-text">Andrew injected the life-saving medicine into Susan's arm.</p>
+          </div>
+          <div id="v1" class="answer-box voice-ans"><strong>Target Passive:</strong> The life-saving medicine was injected into Susan's arm by Andrew.</div>
+          <button class="toggle-btn" onclick="toggleOne('v1', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q2 &bull; Active &rarr; Passive</span>
+            <p class="q-text">The frightened midwife placed the lifeless infant beneath the bed among sodden newspapers.</p>
+          </div>
+          <div id="v2" class="answer-box voice-ans"><strong>Target Passive:</strong> The lifeless infant was placed beneath the bed among sodden newspapers by the frightened midwife.</div>
+          <button class="toggle-btn" onclick="toggleOne('v2', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q3 &bull; Active &rarr; Passive?</span>
+            <p class="q-text">Joe Morgan paced anxiously up and down outside the house.</p>
+          </div>
+          <div id="v3" class="answer-box trap voice-ans"><strong>Intransitive Trap!</strong> Cannot be converted because 'paced' is an intransitive verb with no direct object.</div>
+          <button class="toggle-btn" onclick="toggleOne('v3', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q4 &bull; Active &rarr; Passive</span>
+            <p class="q-text">The elderly mother handed a warm cup of tea to Andrew.</p>
+          </div>
+          <div id="v4" class="answer-box voice-ans"><strong>Target Passive:</strong> A warm cup of tea was handed to Andrew by the elderly mother.</div>
+          <button class="toggle-btn" onclick="toggleOne('v4', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q5 &bull; Active &rarr; Passive</span>
+            <p class="q-text">Andrew rubbed the limp infant's body with a rough towel.</p>
+          </div>
+          <div id="v5" class="answer-box voice-ans"><strong>Target Passive:</strong> The limp infant's body was rubbed with a rough towel by Andrew.</div>
+          <button class="toggle-btn" onclick="toggleOne('v5', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag passive-tag">Q6 &bull; Passive &rarr; Active</span>
+            <p class="q-text">The child was plunged alternately into the icy and steaming baths by the desperate doctor.</p>
+          </div>
+          <div id="v6" class="answer-box voice-ans"><strong>Target Active:</strong> The desperate doctor plunged the child alternately into the icy and steaming baths.</div>
+          <button class="toggle-btn" onclick="toggleOne('v6', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q7 &bull; Active &rarr; Passive</span>
+            <p class="q-text">The midwife whimpered, "It's stillborn."</p>
+          </div>
+          <div id="v7" class="answer-box voice-ans"><strong>Target Passive:</strong> A frightened whimper of "It's stillborn" was uttered by the midwife.</div>
+          <button class="toggle-btn" onclick="toggleOne('v7', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q8 &bull; Active &rarr; Passive</span>
+            <p class="q-text">Andrew smashed the glass ampule with frantic speed.</p>
+          </div>
+          <div id="v8" class="answer-box voice-ans"><strong>Target Passive:</strong> The glass ampule was smashed with frantic speed by Andrew.</div>
+          <button class="toggle-btn" onclick="toggleOne('v8', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag passive-tag">Q9 &bull; Passive &rarr; Active</span>
+            <p class="q-text">A joyful iridescent bubble of mucus was pushed from the tiny nostril.</p>
+          </div>
+          <div id="v9" class="answer-box voice-ans"><strong>Target Active:</strong> The tiny nostril pushed out a joyful iridescent bubble of mucus (or: Mucus formed a joyful iridescent bubble at the tiny nostril).</div>
+          <button class="toggle-btn" onclick="toggleOne('v9', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q10 &bull; Active &rarr; Passive?</span>
+            <p class="q-text">First-shift miners walked out into the streets at five o'clock.</p>
+          </div>
+          <div id="v10" class="answer-box trap voice-ans"><strong>Intransitive Trap!</strong> Cannot be converted because 'walked' is an intransitive verb with no direct object.</div>
+          <button class="toggle-btn" onclick="toggleOne('v10', this)">Reveal Answer</button>
+        </div>
+      </div>
+
+      <div class="highlight-box" style="margin-top: 1.5rem;">
+        <strong>Quick Pair Check-In:</strong> Which question was the trickiest trap for you, and how can you quickly test whether a verb has a direct object?
+      </div>
+    </section>
+
+    <!-- Page 3: Module 2 - Degrees of Comparison -->
+    <section id="module2">
+      <div class="section-header">
+        <div class="section-kicker">Module 2</div>
+        <h2>Degrees of Comparison &amp; Character Evolution</h2>
+      </div>
+
+      <div class="ladder">
+        <div class="ladder-step">
+          <h4>1. Positive Degree</h4>
+          <p>States a base quality without comparison.</p>
+          <p style="margin-top:0.5rem; color:var(--muted);"><em>Examples:</em> weary, tense, calm, real, desperate</p>
+        </div>
+        <div class="ladder-step comp">
+          <h4>2. Comparative Degree</h4>
+          <p>Compares two states, people, or moments in time (<code>-er</code> or <code>more</code>).</p>
+          <p style="margin-top:0.5rem; color:var(--muted);"><em>Examples:</em> wearier, tenser, more exhausted, worse</p>
+        </div>
+        <div class="ladder-step sup">
+          <h4>3. Superlative Degree</h4>
+          <p>Marks the extreme highest or lowest degree in a group (<code>-est</code> or <code>most</code>).</p>
+          <p style="margin-top:0.5rem; color:var(--muted);"><em>Examples:</em> weariest, tensest, most significant, worst</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 2rem;">
+        <h3>Charting Andrew Manson's Journey on an Adjectival Scale</h3>
+        <div class="scale-chain"><span><strong>Tired / Weary</strong></span> &rarr; <span>Wearier / More exhausted</span> &rarr; <span><strong>Weariest / Most exhausted</strong></span></div>
+        <div class="scale-chain"><span><strong>Desperate</strong></span> &rarr; <span>More desperate</span> &rarr; <span><strong>Most desperate</strong></span></div>
+        <div class="scale-chain"><span><strong>Bad</strong> (Irregular)</span> &rarr; <span>Worse</span> &rarr; <span><strong>Worst</strong></span></div>
+        <div class="scale-chain"><span><strong>Real</strong></span> &rarr; <span>More real / Realer</span> &rarr; <span><strong>Most real / Realest</strong></span></div>
+      </div>
+
+      <!-- 10 Practice Questions: Degrees of Comparison -->
+      <div class="practice-header">
+        <h3>Practice Challenge: 10 Comparison Questions (Based on <em>Birth</em>)</h3>
+        <div class="teacher-controls">
+          <button class="btn btn-teal btn-sm" onclick="toggleAll('deg-ans', true)">Teacher: Show All</button>
+          <button class="btn btn-sm" style="background:#e2e8f2; color:var(--dark);" onclick="toggleAll('deg-ans', false)">Hide All</button>
+        </div>
+      </div>
+
+      <div class="instruction-banner">
+        <strong>Instructions:</strong> Fill in the correct degree of the adjective provided in brackets, complete the scale, or transform the sentence as directed.
+      </div>
+
+      <div class="q-grid">
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q1 &bull; Fill in the Blank</span>
+            <p class="q-text">At midnight, Andrew felt <strong>[weary]</strong> than he usually did after a long day.</p>
+          </div>
+          <div id="d1" class="answer-box deg-ans"><strong>Answer:</strong> wearier (or: more weary)</div>
+          <button class="toggle-btn" onclick="toggleOne('d1', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q2 &bull; Fill in the Blank</span>
+            <p class="q-text">Saving the child was the <strong>[significant]</strong> achievement of Andrew's early medical career in Blaenelly.</p>
+          </div>
+          <div id="d2" class="answer-box deg-ans"><strong>Answer:</strong> most significant</div>
+          <button class="toggle-btn" onclick="toggleOne('d2', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q3 &bull; Irregular Form</span>
+            <p class="q-text">As the minutes ticked away by the kitchen fire, Andrew's anxiety grew <strong>[bad]</strong> than before.</p>
+          </div>
+          <div id="d3" class="answer-box deg-ans"><strong>Answer:</strong> worse</div>
+          <button class="toggle-btn" onclick="toggleOne('d3', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q4 &bull; Fill in the Blank</span>
+            <p class="q-text">The atmosphere in the upstairs bedroom was <strong>[tense]</strong> than the quiet kitchen downstairs.</p>
+          </div>
+          <div id="d4" class="answer-box deg-ans"><strong>Answer:</strong> tenser (or: more tense)</div>
+          <button class="toggle-btn" onclick="toggleOne('d4', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q5 &bull; Superlative</span>
+            <p class="q-text">Cronin’s description of the resuscitation scene is one of the <strong>[vivid]</strong> passages in English literature.</p>
+          </div>
+          <div id="d5" class="answer-box deg-ans"><strong>Answer:</strong> most vivid</div>
+          <button class="toggle-btn" onclick="toggleOne('d5', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q6 &bull; Dual Blank</span>
+            <p class="q-text">Andrew experienced a <strong>[deep]</strong> sense of defeat when the baby first appeared stillborn, but his final realization was even <strong>[profound]</strong>.</p>
+          </div>
+          <div id="d6" class="answer-box deg-ans"><strong>Answer:</strong> deep (or deeper), more profound</div>
+          <button class="toggle-btn" onclick="toggleOne('d6', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q7 &bull; Transformation</span>
+            <p class="q-text">Transform using the superlative degree: <em>"No other moment in Andrew's life was as real as this."</em> &rarr; "This was the <strong>[real]</strong> moment of his life."</p>
+          </div>
+          <div id="d7" class="answer-box deg-ans"><strong>Answer:</strong> most real / realest</div>
+          <button class="toggle-btn" onclick="toggleOne('d7', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q8 &bull; Scaling Chain</span>
+            <p class="q-text">Complete the adjective scaling chain: Positive: <em>desperate</em> &rarr; Comparative: <strong>[ ? ]</strong> &rarr; Superlative: <strong>[ ? ]</strong>.</p>
+          </div>
+          <div id="d8" class="answer-box deg-ans"><strong>Answer:</strong> Comparative: <em>more desperate</em> &bull; Superlative: <em>most desperate</em></div>
+          <button class="toggle-btn" onclick="toggleOne('d8', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q9 &bull; Rewrite</span>
+            <p class="q-text">Rewrite using the comparative degree: <em>"The midwife was hopeless, but Andrew was determined."</em> &rarr; "Andrew was <strong>[determined]</strong> than the midwife."</p>
+          </div>
+          <div id="d9" class="answer-box deg-ans"><strong>Answer:</strong> more determined</div>
+          <button class="toggle-btn" onclick="toggleOne('d9', this)">Reveal Answer</button>
+        </div>
+
+        <div class="q-card">
+          <div>
+            <span class="q-tag">Q10 &bull; Identify Root</span>
+            <p class="q-text">Identify the degree of comparison in the final sentence: <em>"I've done something real at last."</em> What is the positive root adjective?</p>
+          </div>
+          <div id="d10" class="answer-box deg-ans"><strong>Answer:</strong> Positive degree &bull; Root adjective: <em>"real"</em></div>
+          <button class="toggle-btn" onclick="toggleOne('d10', this)">Reveal Answer</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 4: Student Submission Hub & Exit Ticket -->
+    <section id="hub">
+      <div class="section-header">
+        <div class="section-kicker">Student Hub</div>
+        <h2>Digital Exit Ticket &amp; Reflective Homework Portal</h2>
+      </div>
+
+      <div class="grid-2">
+        <!-- Interactive Exit Ticket -->
+        <div class="card">
+          <h3>Task 1: Interactive Exit Ticket</h3>
+          <p style="font-size:0.93rem; color:var(--muted); margin-bottom:1.1rem;">
+            Select one active sentence from your notes on <em>Birth</em>, convert it into passive voice, and write a corresponding comparative or superlative sentence.
+          </p>
+          <form id="exitTicketForm" onsubmit="generateTicket(event)">
+            <div class="form-group">
+              <label for="studentName">Student Name &amp; Roll No.</label>
+              <input type="text" id="studentName" placeholder="e.g., Aarav Sharma (XI-B, Roll 14)" required />
+            </div>
+            <div class="form-group">
+              <label for="activeSent">1. Your Active Sentence (from <em>Birth</em>)</label>
+              <input type="text" id="activeSent" placeholder="e.g., Andrew gave the child to the nurse." required />
+            </div>
+            <div class="form-group">
+              <label for="passiveSent">2. Converted Passive Sentence</label>
+              <input type="text" id="passiveSent" placeholder="e.g., The child was given to the nurse by Andrew." required />
+            </div>
+            <div class="form-group">
+              <label for="compSent">3. Comparative / Superlative Sentence</label>
+              <textarea id="compSent" rows="2" placeholder="e.g., This was the most exhausting yet rewarding night of Andrew's career." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate Exit Ticket Card</button>
+          </form>
+
+          <div id="ticketOutput" class="ticket-output">
+            <pre id="ticketText"></pre>
+            <button type="button" class="btn btn-teal btn-sm" onclick="copyTicket()">Copy for Portal / Classroom</button>
+            <span id="copyStatus" style="margin-left:0.75rem; font-size:0.85rem; color:var(--teal); font-weight:600;"></span>
+          </div>
+        </div>
+
+        <!-- Reflective Homework Prompts -->
+        <div class="card">
+          <h3>Task 2: Reflective Homework Prompts</h3>
+          <p style="font-size:0.93rem; color:var(--muted); margin-bottom:1.25rem;">
+            Complete these reflections in your notebook and submit your full unit portfolio to your teacher.
+          </p>
+
+          <div class="prompt-card">
+            <h4 style="margin-bottom:0.35rem; color:var(--dark);">1. The Weight of Doubt</h4>
+            <p style="font-size:0.94rem;">Dr. Andrew Manson experienced a deep tug-of-war between his logical, doubting mind and his hopeful heart while waiting at Blaina Terrace. Think of a time when you faced a situation where you felt completely unprepared or overwhelmed by doubt. How did you push through it?</p>
+          </div>
+
+          <div class="prompt-card" style="border-left-color: var(--teal);">
+            <h4 style="margin-bottom:0.35rem; color:var(--dark);">2. The Burden of Expectation</h4>
+            <p style="font-size:0.94rem;">Joe Morgan and his family placed absolute working-class faith in young Andrew (<em>"I know ye'll do well for us"</em>). Describe a time when someone placed high trust in your abilities. How did it affect your performance or anxiety?</p>
+          </div>
+
+          <div class="highlight-box">
+            <strong>Submission Reminder:</strong> Submit your completed grammar worksheets, Exit Ticket response, and reflection notes via your class portal or notebook submission.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <strong>Pulse &amp; Syntax: Grammar in the World of Birth</strong> &bull; Interactive Teaching-Learning Material (TLM) for Class XI English
+  </footer>
+
+  <script>
+    function toggleOne(id, btn) {
+      const box = document.getElementById(id);
+      const isVisible = box.classList.toggle('visible');
+      btn.textContent = isVisible ? 'Hide Answer' : 'Reveal Answer';
+    }
+
+    function toggleAll(className, show) {
+      const boxes = document.querySelectorAll('.' + className);
+      boxes.forEach(box => {
+        const btn = box.nextElementSibling;
+        if (show) {
+          box.classList.add('visible');
+          if (btn) btn.textContent = 'Hide Answer';
+        } else {
+          box.classList.remove('visible');
+          if (btn) btn.textContent = 'Reveal Answer';
+        }
+      });
+    }
+
+    function generateTicket(e) {
+      e.preventDefault();
+      const name = document.getElementById('studentName').value.trim();
+      const active = document.getElementById('activeSent').value.trim();
+      const passive = document.getElementById('passiveSent').value.trim();
+      const comp = document.getElementById('compSent').value.trim();
+
+      const summary =
+        `EXIT TICKET — PULSE & SYNTAX (BIRTH)\n` +
+        `Student: ${name}\n` +
+        `----------------------------------------\n` +
+        `Active Voice: ${active}\n` +
+        `Passive Voice: ${passive}\n` +
+        `Degree of Comparison: ${comp}`;
+
+      document.getElementById('ticketText').textContent = summary;
+      document.getElementById('ticketOutput').classList.add('visible');
+      document.getElementById('copyStatus').textContent = '';
+    }
+
+    function copyTicket() {
+      const text = document.getElementById('ticketText').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        document.getElementById('copyStatus').textContent = 'Copied to clipboard!';
+      });
+    }
+  </script>
+</body>
+</html>
